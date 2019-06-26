@@ -14,6 +14,11 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def contacts
+    @contacts = current_user.contactees
+    render json: @contacts
+  end
+
   private
 
   def user_params
