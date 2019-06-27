@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       get '/profile', to: 'users#profile'
       get '/contacts', to: 'users#contacts'
       get '/events', to: 'events#index'
+      # for development
+      get '/users', to: 'users#index'
     end
   end
 end
