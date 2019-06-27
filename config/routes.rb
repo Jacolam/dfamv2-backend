@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
       get '/contacts', to: 'users#contacts'
+      get '/events', to: 'events#index'
     end
   end
 end
