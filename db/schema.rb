@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_183801) do
   create_table "logs", force: :cascade do |t|
     t.integer "user_id"
     t.integer "attendee_id"
-    t.boolean "type", default: false
+    t.boolean "log_type", default: false
     t.date "date"
     t.time "time"
     t.boolean "completed", default: false

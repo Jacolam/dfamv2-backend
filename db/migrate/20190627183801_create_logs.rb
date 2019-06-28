@@ -3,9 +3,9 @@ class CreateLogs < ActiveRecord::Migration[5.2]
     create_table :logs do |t|
       t.integer :user_id
       t.integer :attendee_id
-      t.boolean :type ,default: false
+      t.boolean :log_type ,default: false
       t.date :date
-      t.time :time 
+      t.time :time
       t.boolean :completed ,default: false
 
       t.timestamps
