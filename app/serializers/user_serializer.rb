@@ -1,5 +1,9 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :username, :phone, :email, :avatar, :twitter, :facebook
+  
+  has_many :logs
+  has_many :inverse_logs
+
   has_many :contacts do
     object.contacts.map do |contact|
       contact = {
@@ -14,6 +18,7 @@ class UserSerializer < ActiveModel::Serializer
         },
         meet_cycle: contact.meet_cycle,
         call_cycle: contact.call_cycle
+
       }
     end
   end
