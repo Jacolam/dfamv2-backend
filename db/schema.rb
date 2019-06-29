@@ -38,8 +38,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_183801) do
     t.integer "user_id"
     t.integer "attendee_id"
     t.boolean "log_type", default: false
-    t.date "date"
-    t.time "time"
+    t.string "datetime"
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -4,8 +4,7 @@ class CreateLogs < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.integer :attendee_id
       t.boolean :log_type ,default: false
-      t.date :date
-      t.time :time
+      t.string :datetime
       t.boolean :completed ,default: false
 
       t.timestamps

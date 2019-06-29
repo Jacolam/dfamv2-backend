@@ -21,7 +21,7 @@ class Api::V1::LogsController < ApplicationController
   private
 
   def log_params
-    params.permit(:attendee_id, :log_type, :date, :time)
+    params.permit(:attendee_id, :log_type, :datetime)
   end
 
 end
