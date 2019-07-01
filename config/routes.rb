@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/contacts', to: 'users#contacts'
       get '/events', to: 'events#index'
       get '/people', to: 'users#unadded'
+      delete '/removecontact', to: 'contacts#destroy'
       # for development
       get '/logs', to: 'logs#index'
       get '/users', to: 'users#index'
