@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2019_06_27_183801) do
   create_table "contacts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "contactee_id"
-    t.integer "meet_cycle", default: 0
-    t.integer "call_cycle", default: 0
+    t.integer "meet_cycle", default: 14
+    t.integer "call_cycle", default: 14
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_183801) do
     t.string "username"
     t.string "phone"
     t.string "email"
-    t.string "avatar"
+    t.string "avatar", default: "https://pngimage.net/wp-content/uploads/2018/05/default-profile-pic-png-8.png"
     t.string "twitter"
     t.string "facebook"
     t.string "password_digest"

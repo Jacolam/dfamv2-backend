@@ -6,6 +6,9 @@ User.create(username:'tim', password: '1', phone: '313-1337', email: 'real@email
 User.create(username:'pat', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
 User.create(username:'jason', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
 User.create(username:'diana', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
+User.create(username:'troy', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
+User.create(username:'ferris', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
+User.create(username:'kevin', password: '1', phone: '313-1337', email: 'real@email.com', twitter: coffee_dad_url, facebook: coffee_dad_url)
 
 Contact.create(user_id: 1 , contactee_id: 2 ,meet_cycle: 7, call_cycle: 1 )
 Contact.create(user_id: 1 , contactee_id: 3 ,meet_cycle: 30, call_cycle: 3 )

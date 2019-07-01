@@ -18,6 +18,14 @@ class Api::V1::UsersController < ApplicationController
     render json: current_user
   end
 
+  def unadded
+    @users = User.where.not(id: current_user.id)
+    @contacts = current_user.contactees
+    @unadded = @users.select{|user| !@contacts.include?(user)}
+    render json: @unadded
+  end
+
+
  # for development
   def index
     @users = User.all
