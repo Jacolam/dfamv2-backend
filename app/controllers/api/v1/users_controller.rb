@@ -22,7 +22,6 @@ class Api::V1::UsersController < ApplicationController
     @users = User.where.not(id: current_user.id)
     @contacts = current_user.contactees
     @unadded = @users.select{|user| !@contacts.include?(user)}
-    byebug
     render json: @unadded
   end
 

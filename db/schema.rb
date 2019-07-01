@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_183801) do
     t.string "username"
     t.string "phone"
     t.string "email"
-    t.string "avatar"
+    t.string "avatar", default: "https://pngimage.net/wp-content/uploads/2018/05/default-profile-pic-png-8.png"
     t.string "twitter"
     t.string "facebook"
     t.string "password_digest"

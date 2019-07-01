@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       post '/login', to: 'auth#create'
       post '/logs', to: 'logs#create'
+      post '/addperson', to: 'contacts#create'
       get '/profile', to: 'users#profile'
       get '/contacts', to: 'users#contacts'
       get '/events', to: 'events#index'
