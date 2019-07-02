@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post '/addperson', to: 'contacts#create'
       get '/profile', to: 'users#profile'
       get '/contacts', to: 'users#contacts'
+      # get "/contacts/user/#{id}", to: 'contacts#contacts'
       get '/events', to: 'events#index'
       get '/people', to: 'users#unadded'
       delete '/removecontact', to: 'contacts#destroy'

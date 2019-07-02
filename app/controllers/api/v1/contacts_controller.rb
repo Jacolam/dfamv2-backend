@@ -12,6 +12,10 @@ class Api::V1::ContactsController < ApplicationController
     render json:{message:'user has been removed from contacts'}
   end
 
+  def edit
+    byebug
+  end
+
   private
 
   def contact_params
