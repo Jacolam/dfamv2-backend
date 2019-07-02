@@ -26,16 +26,13 @@ class Api::V1::UsersController < ApplicationController
         call_date = call_dates.sort()
         nearest_call = call_dates.find{|i| ( i[0,10].to_date - Date.today).to_i >= 0 }
         if (nearest_call && nearest_call[0,10].to_date - Date.today).to_i > call_cycle
-          byebug
           Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle, log_type: true)
           else if !nearest_call
-            byebug
             Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle, log_type: true)
           end
         end
 
         else if call_dates.empty?
-        byebug
           Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle, log_type: true)
         end
 
