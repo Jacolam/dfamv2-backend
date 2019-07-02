@@ -3,7 +3,7 @@ class Api::V1::LogsController < ApplicationController
 
   def create
     @log = Log.create(log_params)
-    @log['user_id'] = current_user.id
+    @log[:user_id] = current_user.id
     @log.save
     # byebug
     if @log.valid?
@@ -11,6 +11,16 @@ class Api::V1::LogsController < ApplicationController
     else
       render json: { error: 'failed to create log' }, status: :not_acceptable
     end
+  end
+
+  def update
+    log = Log.find(params[:id])
+    log[:completed] = !log[:completed]
+    log.save
+    render json: log
+  end
+
+  def edit
   end
 
   def index
