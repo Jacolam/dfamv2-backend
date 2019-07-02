@@ -1,6 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :username, :phone, :email, :avatar, :twitter, :facebook
-  
+
   has_many :logs
   has_many :inverse_logs
 
