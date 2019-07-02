@@ -21,17 +21,19 @@ class Api::V1::UsersController < ApplicationController
         # # logs = contact.logs
       calls = comb_logs.select{|log| log.log_type==false}
       call_dates = comb_logs.map{|log| log.datetime}
+      call_cycle = current_user.contacts.where(contactee_id: contact.id).first.call_cycle
       if !call_dates.empty?
         call_date = call_dates.sort()
-        call_cycle = current_user.contacts.where(contactee_id: contact.id).first.call_cycle
-        nearest_call = call_dates.find{|i| ( i[0,10].to_date - Date.today).to_i >= 1 }
-
-        if (nearest_call && nearest_call[0,10].to_date - Date.today).to_i > call_cycle ||
-          Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle)
+        nearest_call = call_dates.find{|i| ( i[0,10].to_date - Date.today).to_i >= 0 }
+        if (nearest_call && nearest_call[0,10].to_date - Date.today).to_i >= call_cycle ||
+          Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle, log_type: true)
           else if !nearest_call
-            Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle)
+            Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle, log_type: true)
           end
         end
+      else
+        byebug
+        Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle, log_type: true)
       end
 
     end
