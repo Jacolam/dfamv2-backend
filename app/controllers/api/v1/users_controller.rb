@@ -25,14 +25,20 @@ class Api::V1::UsersController < ApplicationController
       if !call_dates.empty?
         call_date = call_dates.sort()
         nearest_call = call_dates.find{|i| ( i[0,10].to_date - Date.today).to_i >= 0 }
-        if (nearest_call && nearest_call[0,10].to_date - Date.today).to_i >= call_cycle 
+        if (nearest_call && nearest_call[0,10].to_date - Date.today).to_i > call_cycle
+          byebug
           Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle, log_type: true)
           else if !nearest_call
+            byebug
             Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle, log_type: true)
           end
         end
-      else
-        Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle, log_type: true)
+
+        else if call_dates.empty?
+        byebug
+          Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle, log_type: true)
+        end
+
       end
 
       meet_ups = comb_logs.select{|log| log.log_type==true}
@@ -42,14 +48,17 @@ class Api::V1::UsersController < ApplicationController
       if !meet_dates.empty?
         meet_date = meet_dates.sort()
         nearest_meet = meet_dates.find{|i| ( i[0,10].to_date - Date.today).to_i >= 0 }
-        if (nearest_meet && nearest_meet[0,10].to_date - Date.today).to_i >= meet_cycle
+        if (nearest_meet && nearest_meet[0,10].to_date - Date.today).to_i > meet_cycle
           Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + meet_cycle)
-        else if !nearest_meet
+          else if !nearest_meet
             Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + meet_cycle)
           end
         end
-      else
-        Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + meet_cycle)
+
+        else if meet_dates.empty?
+          Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + meet_cycle)
+        end
+
       end
 
     end
