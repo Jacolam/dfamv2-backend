@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/contacts', to: 'contacts#index'
       # patch "/contacts/:id", to: 'contacts#update'
       patch '/logs/:id', to: 'logs#update'
+      delete '/logs/:id', to: 'logs#destroy'
       get '/events', to: 'events#index'
       get '/people', to: 'users#unadded'
       delete '/removecontact', to: 'contacts#destroy'

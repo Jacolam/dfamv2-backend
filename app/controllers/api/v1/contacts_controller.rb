@@ -9,6 +9,8 @@ class Api::V1::ContactsController < ApplicationController
   def destroy
     contact = current_user.contacts.where(contactee_id: params['id']).first
     contact.destroy()
+    contacts_logs = current_user.logs.where(attendee_id: contact.contactee_id)
+    contacts_logs.destroy_all()
     render json:{message:'user has been removed from contacts'}
   end
 

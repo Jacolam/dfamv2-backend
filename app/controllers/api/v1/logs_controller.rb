@@ -28,6 +28,11 @@ class Api::V1::LogsController < ApplicationController
     render json:@logs
   end
 
+  def destroy
+    log = Log.find(params[:id])
+    log.destroy
+  end
+
   private
 
   def log_params
