@@ -17,9 +17,9 @@ class Api::V1::ContactsController < ApplicationController
   def index
     current_user.contactees.each do |contact|
 
-      comb_logs = (contact.inverse_logs + contact.logs)
-      calls = comb_logs.select{|log| log.log_type==false}
-      call_dates = comb_logs.map{|log| log.datetime}
+      comb_logs = (contact.inverse_logs.where(user_id: current_user.id) + contact.logs.where(attendee_id: current_user.id))
+      calls = comb_logs.select {|log| log.log_type==true}
+      call_dates = calls.map{|log| log.datetime}
       call_cycle = current_user.contacts.where(contactee_id: contact.id).first.call_cycle
 
       if !call_dates.empty?
@@ -38,8 +38,8 @@ class Api::V1::ContactsController < ApplicationController
 
       end
 
-      meet_ups = comb_logs.select{|log| log.log_type==true}
-      meet_dates = comb_logs.map{|log| log.datetime}
+      meet_ups = comb_logs.select{|log| log.log_type==false}
+      meet_dates = meet_ups.map{|log| log.datetime}
       meet_cycle = current_user.contacts.where(contactee_id: contact.id).first.meet_cycle
 
       if !meet_dates.empty?
