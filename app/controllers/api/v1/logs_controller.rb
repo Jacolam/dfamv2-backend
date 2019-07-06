@@ -13,12 +13,20 @@ class Api::V1::LogsController < ApplicationController
     end
   end
 
-  def update
+  def complete
     log = Log.find(params[:id])
     log[:completed] = !log[:completed]
     log.save
     render json: log
   end
+
+  def update
+     log = Log.find(params[:id])
+     # log['datetime'] = params[:date] + " " + params[:time]
+     log.update(datetime: params[:date] + " " + params[:time] )
+     render json: log
+  end
+
 
   def edit
   end
