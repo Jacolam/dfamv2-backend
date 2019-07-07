@@ -17,7 +17,8 @@ class Api::V1::ContactsController < ApplicationController
   def index
     current_user.contactees.each do |contact|
 
-      comb_logs = (contact.inverse_logs.where(user_id: current_user.id) + contact.logs.where(attendee_id: current_user.id))
+      comb_logs = contact.inverse_logs.where(user_id: current_user.id)
+      # comb_logs = (contact.inverse_logs.where(user_id: current_user.id) + contact.logs.where(attendee_id: current_user.id))
       calls = comb_logs.select {|log| log.log_type==true}
       call_dates = calls.map{|log| log.datetime}
       call_cycle = current_user.contacts.where(contactee_id: contact.id).first.call_cycle
