@@ -1,13 +1,19 @@
 coffee_dad_url = 'https://twitter.com/coffee_dad?lang=en'
-default_photo = 'https://pngimage.net/wp-content/uploads/2018/05/default-profile-pic-png-8.png'
-User.create(username:'jacob', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
-User.create(username:'bren', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
-User.create(username:'tim', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
-User.create(username:'pat', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
-User.create(username:'jason', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
-User.create(username:'diana', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
-User.create(username:'troy', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
-User.create(username:'ferris', password: '1', phone: '313-1337', email: 'real@email.com', avatar: default_photo, twitter: coffee_dad_url, facebook: coffee_dad_url)
+# default_photo = 'https://pngimage.net/wp-content/uploads/2018/05/default-profile-pic-png-8.png'
+
+def rando_sharky
+  num = rand(1..20)
+  shark_url = "https://sadanduseless.b-cdn.net/wp-content/uploads/2018/10/ikea-shark#{num}.jpg"
+end
+
+User.create(username:'jacob', password: '1', phone: '313-1337', email: 'real@email.com', avatar: rando_sharky(), twitter: coffee_dad_url, facebook: coffee_dad_url)
+User.create(username:'bren', password: '1', phone: '313-1337', email: 'real@email.com', avatar: rando_sharky(), twitter: coffee_dad_url, facebook: coffee_dad_url)
+User.create(username:'tim', password: '1', phone: '313-1337', email: 'real@email.com', avatar: rando_sharky(), twitter: coffee_dad_url, facebook: coffee_dad_url)
+User.create(username:'pat', password: '1', phone: '313-1337', email: 'real@email.com', avatar: rando_sharky(), twitter: coffee_dad_url, facebook: coffee_dad_url)
+User.create(username:'jason', password: '1', phone: '313-1337', email: 'real@email.com', avatar: rando_sharky(), twitter: coffee_dad_url, facebook: coffee_dad_url)
+User.create(username:'diana', password: '1', phone: '313-1337', email: 'real@email.com', avatar: rando_sharky(), twitter: coffee_dad_url, facebook: coffee_dad_url)
+User.create(username:'troy', password: '1', phone: '313-1337', email: 'real@email.com', avatar: rando_sharky(), twitter: coffee_dad_url, facebook: coffee_dad_url)
+User.create(username:'ferris', password: '1', phone: '313-1337', email: 'real@email.com', avatar: rando_sharky(), twitter: coffee_dad_url, facebook: coffee_dad_url)
 User.create(username:'kevin', password: '1', phone: '313-1337', email: 'real@email.com', twitter: coffee_dad_url, facebook: coffee_dad_url)
 
 # Contact.create(user_id: 1 , contactee_id: 2 ,meet_cycle: 7, call_cycle: 1 )

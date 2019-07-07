@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       # patch "/contacts/:id", to: 'contacts#update'
       patch '/logs/:id', to: 'logs#complete'
       patch '/logs', to: 'logs#update'
+      patch '/user/update', to: 'users#update_profile'
       delete '/logs/:id', to: 'logs#destroy'
       get '/events', to: 'events#index'
       get '/people', to: 'users#unadded'
