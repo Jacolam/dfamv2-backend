@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post '/login', to: 'auth#create'
       post '/logs', to: 'logs#create'
       get '/profile', to: 'users#profile'
+      get '/profile/edit', to: 'users#edit'
       post '/addperson', to: 'contacts#create'
       get '/contacts', to: 'contacts#index'
       # patch "/contacts/:id", to: 'contacts#update'
