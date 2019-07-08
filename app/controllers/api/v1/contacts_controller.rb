@@ -24,7 +24,7 @@ class Api::V1::ContactsController < ApplicationController
       call_cycle = current_user.contacts.where(contactee_id: contact.id).first.call_cycle
       if !call_dates.empty?
         call_date = call_dates.sort()
-        nearest_call = call_dates.find{|i| ( i[0,11].to_date - Date.today).to_i >= 0 }
+        nearest_call = call_date.find{|i| ( i[0,11].to_date - Date.today).to_i >= 0 }
         if (nearest_call && nearest_call[0,10].to_date - Date.today).to_i > call_cycle
           Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + call_cycle - 1, log_type: true)
           else if !nearest_call
@@ -41,10 +41,10 @@ class Api::V1::ContactsController < ApplicationController
       meet_ups = comb_logs.select{|log| log.log_type==false}
       meet_dates = meet_ups.map{|log| log.datetime}
       meet_cycle = current_user.contacts.where(contactee_id: contact.id).first.meet_cycle
-
       if !meet_dates.empty?
         meet_date = meet_dates.sort()
-        nearest_meet = meet_dates.find{|i| ( i[0,10].to_date - Date.today).to_i >= 0 }
+        nearest_meet = meet_date.find{|i| ( i[0,11].to_date - Date.today).to_i >= 0 }
+        byebug
         if (nearest_meet && nearest_meet[0,10].to_date - Date.today).to_i > meet_cycle
           Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + meet_cycle)
           else if !nearest_meet
