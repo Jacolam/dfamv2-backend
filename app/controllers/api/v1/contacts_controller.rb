@@ -44,7 +44,6 @@ class Api::V1::ContactsController < ApplicationController
       if !meet_dates.empty?
         meet_date = meet_dates.sort()
         nearest_meet = meet_date.find{|i| ( i[0,11].to_date - Date.today).to_i >= 0 }
-        byebug
         if (nearest_meet && nearest_meet[0,10].to_date - Date.today).to_i > meet_cycle
           Log.create(user_id: current_user.id, attendee_id: contact.id, datetime: Date.today + meet_cycle)
           else if !nearest_meet
