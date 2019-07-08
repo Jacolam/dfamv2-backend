@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       get '/profile/edit', to: 'users#edit'
       post '/addperson', to: 'contacts#create'
       get '/contacts', to: 'contacts#index'
-      # patch "/contacts/:id", to: 'contacts#update'
+      patch "/contacts/update", to: 'contacts#update'
       patch '/logs/:id', to: 'logs#complete'
       patch '/logs', to: 'logs#update'
       patch '/user/update', to: 'users#update_profile'

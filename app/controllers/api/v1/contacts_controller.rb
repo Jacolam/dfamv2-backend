@@ -62,6 +62,13 @@ class Api::V1::ContactsController < ApplicationController
     render json: current_user
   end
 
+  def update
+    contact = current_user.contacts.where(contactee_id: params[:attendee_id]).first
+    contact[:call_cycle] = params[:call_cycle]
+    contact[:meet_cycle] = params[:meet_cycle]
+    contact.save
+  end
+
   private
 
   def contact_params
