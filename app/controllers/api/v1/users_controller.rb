@@ -1,16 +1,21 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authorized, only: [:create, :index]
-
-  # def profile
-  #   render json: { user: UserSerializer.new(current_user) }, status: :accepted
-  # end
+  skip_before_action :authorized, only: [:create]
 
   def edit
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
   end
 
   def create
+
+    def rando_sharky
+      num = rand(1..20)
+      shark_url = "https://sadanduseless.b-cdn.net/wp-content/uploads/2018/10/ikea-shark#{num}.jpg"
+    end
+
     @user = User.create(user_params)
+    @user[:avatar] = rando_sharky
+    @user.save
+    
     if @user.valid?
       render json: { user: UserSerializer.new(@user) }, status: :created
     else
@@ -35,10 +40,10 @@ class Api::V1::UsersController < ApplicationController
 
 
  # for development
-  def index
-    @users = User.all
-    render json: @users
-  end
+  # def index
+  #   @users = User.all
+  #   render json: @users
+  # end
 
   private
 
