@@ -1,11 +1,10 @@
 class Api::V1::LogsController < ApplicationController
-  skip_before_action :authorized, only: [:create, :index]
+  skip_before_action :authorized, only: [:create]
 
   def create
     @log = Log.create(log_params)
     @log[:user_id] = current_user.id
     @log.save
-    # byebug
     if @log.valid?
       render json: @log, status: :created
     else
@@ -22,13 +21,8 @@ class Api::V1::LogsController < ApplicationController
 
   def update
      log = Log.find(params[:id])
-     # log['datetime'] = params[:date] + " " + params[:time]
      log.update(datetime: params[:date] + " " + params[:time] )
      render json: log
-  end
-
-
-  def edit
   end
 
   def index
