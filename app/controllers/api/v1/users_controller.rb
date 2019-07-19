@@ -15,7 +15,7 @@ class Api::V1::UsersController < ApplicationController
     @user = User.create(user_params)
     @user[:avatar] = rando_sharky
     @user.save
-    
+
     if @user.valid?
       render json: { user: UserSerializer.new(@user) }, status: :created
     else
@@ -38,6 +38,9 @@ class Api::V1::UsersController < ApplicationController
     render json: @unadded
   end
 
+  def destroy
+    current_user.destroy
+  end
 
  # for development
   # def index
